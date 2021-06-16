@@ -1,4 +1,9 @@
 const MOVE_SPEED = 200
+const INVADER_SPEED = 100
+let CURRENT_SPEED = INVADER_SPEED
+const LEVEL_DOWN = 350
+const TIME_LEFT = 30
+const BULLET_SPEED = 400
 
 layer(['obj', 'ui'], 'obj')
 
@@ -6,6 +11,9 @@ addLevel([
   '!^^^^^^^^^^^^^^^^      &',
   '!^^^^^^^^^^^^^^^^      &',
   '!^^^^^^^^^^^^^^^^      &',
+  '!                      &',
+  '!                      &',
+  '!                      &',
   '!                      &',
   '!                      &',
   '!                      &',
@@ -37,7 +45,42 @@ keyDown('right', () => {
   player.move(MOVE_SPEED, 0)
 })
 
+function spwanBullet(p) {
+  add([
+    rect(6, 18),
+    pos(p),
+    origin('center'),
+    color(0.5, 0.5, 1),
+    'bullet'
+  ])
+}
 
+keyPress('space' ,() => {
+  spwanBullet(player.pos.add(0,-25))
+})
+
+
+
+action('bullet', (b)=>{
+  b.move(0,-BULLET_SPEED)
+  if(b.pos.y < 0)  {
+    destroy(b)
+  }
+})
+
+
+
+
+collides('bullet', 'space-invader', (b, s) => {
+  camShake(4)
+  destroy(b)
+  destroy(s)
+  score.value++
+  score.text = score.value
+})
+
+
+// to display score
 const score = add([
   text('0'),
   pos(50, 50),
@@ -49,31 +92,29 @@ const score = add([
 ])
 
 
-// const TIME_LEFT = 100
 
 
-// const timer = add([
-//   text('0'),
-//   pos(90, 50),
-//   scale(2),
-//   layer('ui'),
-//   {
-//     time: TIME_LEFT,
-//   },
-// ])
+
+const timer = add([
+  text('0'),
+  pos(150, 50),
+  scale(2),
+  layer('ui'),
+  {
+    time: TIME_LEFT,
+  },
+])
 
 
-// timer.action(() => {
-//   timer.time -= dt()
-//   timer.text = timer.time.toFixed(2)
-//   if(timer.time <= 0){
-//     go('lose', score.value)
-//   }
-// })
+timer.action(() => {
+  timer.time -= dt()
+  timer.text = timer.time.toFixed(2)
+  if(timer.time <= 0){
+    go('lose', {score: score.value})
+  }
+})
 
-const INVADER_SPEED = 100
-let CURRENT_SPEED = INVADER_SPEED
-const LEVEL_DOWN = 350
+
 
 action('space-invader', (s)=>{
   s.move(CURRENT_SPEED, 0)
@@ -95,4 +136,16 @@ collides('space-invader', 'left-wall', ()=>{
     s.move(0, LEVEL_DOWN)
   })
 
+})
+
+
+player.overlaps('space-ship', ()=>{
+  go('lose', {score: score.value})
+})
+
+
+action('space-invader', (s)=>{
+  if(s.pos.y >= 12*22){
+    go('lose', {score: score.value})
+  }
 })
