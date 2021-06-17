@@ -27,7 +27,8 @@ The project is created with
 ## Acknowledgement
 
 **This project is **not** my creation, I followed the instructions through a video on YouTube by Ania Kubów.**
-**Video Link**
+
+- **Video Link**
   - https://www.youtube.com/watch?v=4OaHB0JbJDI
 
 ## Github Pages
