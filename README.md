@@ -1,7 +1,7 @@
 # Space Invaders
 
 A very simple and old game.
-Shooting the enemies that comes into the spce.
+Shooting the enemies that comes into the space.
 
 ## Table of Contents
 
