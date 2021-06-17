@@ -6,8 +6,7 @@ A very simple and old game.
 
 - [Technologies](#technologies-used)
 - [Resources](#Applications/resources-used)
-- [Launch](#launch)
-- [Sources](#sources)
+- [Acknowledgement](#Credit)
 - [Status](#github-pages)
 
 ## Technologies Used:
@@ -15,7 +14,7 @@ A very simple and old game.
 The project is created with
 
 - **Replit**
-  - .js files are wirtten by me, rest all the files Html and so on are automatically created by replit.
+  - .js files are wirtten by me, rest all the files like html and so on are automatically created by replit.
 
 ## Applications/resources used :
 
@@ -25,12 +24,12 @@ The project is created with
   - **Kaboom**: The project is possible because of the Kaboom libaray.
 
 
-## Credit
+## Acknowledgement
 
-**This project is not my creation, I followed the instructions through a video in YouTube by Ania Kubów.**
+**This project is **not** my creation, I followed the instructions through a video on YouTube by Ania Kubów.**
 **Video Link**
   - https://www.youtube.com/watch?v=4OaHB0JbJDI
 
 ## Github Pages
 
-- **Access the page here**: - https://meganga.github.io/cloning_conquer_template/
+- **Access the game here**: - https://meganga.github.io/SpaceInvaders/
